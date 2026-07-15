@@ -320,7 +320,7 @@ body
     margin-top: 5%;
     animation: load 1s linear infinite;
     text-align: center;
-    font-size: 108px;
+    font-size: clamp(50px, 10vw, 105px);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -460,21 +460,18 @@ body
     {
         font-size: 3rem;
     }
-    /* Изображение профиля */
     .profile-image {
-        display: none; /* лучше чем visibility: hidden (не занимает место) */
+        display: none;
     }
-
-    /* Секции */
     .skills {
-        font-size: 0.7rem; /* 2rem — слишком много для телефона */
-        height: auto; /* вместо 80vh — чтобы контент не обрезался */
+        font-size: 0.7rem;
+        height: auto;
         min-height: 50vh;
         padding: 2vh 4vw;
     }
 
     .about {
-        font-size: 0.8rem; /* 3.3rem — слишком крупно */
+        font-size: 0.8rem;
         line-height: 1.4;
     }
     .block article
@@ -482,7 +479,6 @@ body
         padding: 10px;
         border-radius: 10px;
     }
-    /* Сетка навыков */
     .skills-area {
         gap: 2vh;
     }
@@ -495,12 +491,10 @@ body
         all: unset;
         width:200px;
     }
-    /* Контакты */
     .contacts img {
         width: 60px;
         right: 0px;
         bottom: 40px;
-        position: absolute; /* если не задано */
     }
     .switch-theme
     {
@@ -521,5 +515,14 @@ body
     .vertical-line:nth-child(n+6)
     {
         display: none;
+    }
+    .switch-theme
+    {
+        scale: 0.7;
+        right: -5px;
+    }
+    .loading-area
+    {
+        box-shadow: black 5px 5px 35px 10px;
     }
 }
