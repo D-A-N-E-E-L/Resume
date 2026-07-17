@@ -2,6 +2,8 @@ const line = document.getElementById('line');
 const age =document.getElementById('age');
 const load = document.getElementById('load');
 const switcher = document.getElementById('switch');
+const html = document.getElementById('html');
+lucide.createIcons();
 async function getIP()
 {
     let token = "3ad52514059894";
@@ -23,6 +25,11 @@ age.innerHTML += " " + Math.floor(Math.abs((bDate - date)/(1000*60*60*24*365)));
 getIP();
 window.addEventListener('load', function ()
 {
+    const cookie = document.cookie.split('=')[1];
+    if(document.cookie) {
+        html.style.colorScheme = cookie;
+        if (cookie === "light") switcher.children.item(0).style.marginLeft = '50%';
+    }
     load.classList.add('loading-area-animation');
     if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', ()=>{
@@ -32,20 +39,24 @@ window.addEventListener('load', function ()
 
 })
 switcher.addEventListener('click', () => {
-    if (document.getElementById('html').style.colorScheme === 'dark') {
-        document.getElementById('html').style.colorScheme = "light";
+    if (html.style.colorScheme === 'dark') {
+        html.style.colorScheme = "light";
         switcher.children.item(0).style.marginLeft = '50%';
+        document.cookie = 'theme=light';
     }
-    else if (document.getElementById('html').style.colorScheme === 'light'){
-        document.getElementById('html').style.colorScheme = "dark";
+    else if (html.style.colorScheme === 'light'){
+        html.style.colorScheme = "dark";
         switcher.children.item(0).style.marginLeft = '0';
+        document.cookie = 'theme=dark';
     }else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.getElementById('html').style.colorScheme = "light";
         switcher.children.item(0).style.marginLeft = '50%';
+        document.cookie = 'theme=light';
     }
     else {
-        document.getElementById('html').style.colorScheme = "dark";
+        html.style.colorScheme = "dark";
         switcher.children.item(0).style.marginLeft = '0';
+        document.cookie = 'theme=dark';
     }
 });
 

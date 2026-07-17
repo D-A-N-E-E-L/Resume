@@ -55,7 +55,7 @@ body
 .nav-area
 {
     width: 20.5vw;
-    height: 100vh;
+    height: 100dvh;
     position: relative;
 }
 .nav-items
@@ -332,6 +332,13 @@ body
          background-position: 100% 100%;
      }
 }
+.switch-auto
+{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 20px;
+}
 .switch-theme
 {
     position: absolute;
@@ -423,20 +430,40 @@ body
     }
 }
 @media (orientation: portrait) {
-    /* Навигация */
+    body{
+        display: grid;
+    }
+    .container {
+        margin-left: 2.5vw;
+        width: 95vw;
+        display: grid;
+        gap: 0;
+        padding-bottom: 10vh;
+    }
     .navbar {
-        width: 12vw; /* чуть шире для удобства */
-        min-width: 60px; /* минимальная ширина */
-        height 120%;
+        width: 100vw;
+        min-height: 60px;
+        height: 10vh;
+        display: flex;
+        z-index: 999;
+        backdrop-filter: none;
     }
     .nav-area {
-        width: 12vw;
+        width: 100vw;
         min-width: 60px;
+        height:0;
     }
-
+    .background-area
+    {
+        background: linear-gradient(45deg, #1daa00, light-dark(#ffffff, #000000),light-dark(#ffffff, #000000), #00c6ae);
+        background-size: 200% 100%;
+        width: 15%;
+        height: 100%;
+    }
     .nav-items {
-        gap: 5vh; /* вместо 150px — адаптивно */
+        display: flex;
         align-items: center;
+        margin: 0 20%;
     }
 
     .nav-items a {
@@ -445,17 +472,23 @@ body
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 5vw;
     }
 
     .nav-items svg {
         width: 40px;
-        height: 40px; /* фиксированный размер вместо 100px */
+        height: 40px;
         flex-shrink: 0;
     }
-
-    /* Основной контент */
     .block {
-        width: 80vw;
+        width: 95vw;
+        padding-top: 10vh;
+    }
+    .block article
+    {
+        backdrop-filter: none;
+        padding: 10px;
+        border-radius: 10px;
     }
     .block h1
     {
@@ -475,27 +508,11 @@ body
         font-size: 0.8rem;
         line-height: 1.4;
     }
-    .block article
-    {
-        padding: 10px;
-        border-radius: 10px;
-    }
     .skills-area {
         gap: 2vh;
     }
-    .carousel ul {
-        all: unset;
-        display: flex;
-    }
-    .carousel li
-    {
-        all: unset;
-        width:200px;
-    }
-    .contacts img {
-        width: 60px;
-        right: 0px;
-        bottom: 40px;
+    .carousel {
+        display: none;
     }
     .switch-theme
     {
