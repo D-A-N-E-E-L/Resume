@@ -50,6 +50,7 @@ body
     height: 100%;
     position: fixed;
     backdrop-filter: blur(0.5rem);
+    transition: 0.5s;
 }
 .nav-area
 {
