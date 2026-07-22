@@ -337,7 +337,8 @@ body
     position: absolute;
     width: 40px;
     height: 40px;
-    right: 20px;
+    right: 100px;
+    bottom: 20px;
 }
 .switch-theme
 {

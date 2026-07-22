@@ -4,6 +4,7 @@ const load = document.getElementById('load');
 const switcher = document.getElementById('switch');
 const html = document.getElementById('html');
 lucide.createIcons();
+const switch_auto = document.getElementById('switch-auto');
 async function getIP()
 {
     let token = "3ad52514059894";
@@ -26,17 +27,21 @@ getIP();
 window.addEventListener('load', function ()
 {
     const cookie = document.cookie.split('=')[1];
-    if(document.cookie) {
-        html.style.colorScheme = cookie;
-        if (cookie === "light") switcher.children.item(0).style.marginLeft = '50%';
-    }
     load.classList.add('loading-area-animation');
     if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', ()=>{
         if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
         else switcher.children.item(0).style.marginLeft = '0%';
     })
-
+    if(document.cookie) {
+        html.style.colorScheme = cookie;
+        if (cookie === "light") switcher.children.item(0).style.marginLeft = '50%';
+    }
+    if (html.style.colorScheme === 'dark light')
+    {
+        switch_auto.style.transform = "rotateZ(90deg)";
+        switch_auto.style.color = "#ffffff";
+    }
 })
 switcher.addEventListener('click', () => {
     if (html.style.colorScheme === 'dark') {
@@ -52,14 +57,46 @@ switcher.addEventListener('click', () => {
         document.getElementById('html').style.colorScheme = "light";
         switcher.children.item(0).style.marginLeft = '50%';
         document.cookie = 'theme=light';
+        switch_auto.style.transform = "rotateZ(0deg)"
+        switch_auto.style.color = "#a3a3a3";
     }
     else {
         html.style.colorScheme = "dark";
         switcher.children.item(0).style.marginLeft = '0';
         document.cookie = 'theme=dark';
+        switch_auto.style.transform = "rotateZ(0deg)"
+        switch_auto.style.color = "#a3a3a3";
     }
 });
-
+switch_auto.addEventListener('click', ()=>{
+  if (html.style.colorScheme==="dark light")
+  {
+      switch_auto.style.transform = "rotateZ(0deg)"
+      switch_auto.style.color = "#a3a3a3";
+      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.getElementById('html').style.colorScheme = "light";
+          switcher.children.item(0).style.marginLeft = '50%';
+          document.cookie = 'theme=light';
+      }
+      else {
+          html.style.colorScheme = "dark";
+          switcher.children.item(0).style.marginLeft = '0';
+          document.cookie = 'theme=dark';
+      }
+  }else
+  {
+      html.style.colorScheme = "dark light";
+      switch_auto.style.transform = "rotateZ(90deg)";
+      switch_auto.style.color = "#ffffff";
+      document.cookie = "theme = 0; max-age=-1;";
+      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+          switcher.children.item(0).style.marginLeft = '50%';
+      }
+      else {
+          switcher.children.item(0).style.marginLeft = '0';
+      }
+  }
+});
 const carousel = document.getElementById('carousel');
 const triggers = document.querySelectorAll('.skills-area span[data-target]');
 if(screen.availHeight < screen.availWidth && window.innerHeight < window.innerWidth){
