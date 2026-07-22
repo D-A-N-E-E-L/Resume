@@ -338,7 +338,7 @@ body
     width: 40px;
     height: 40px;
     right: 100px;
-    bottom: 20px;
+    bottom: 2%;
 }
 .switch-theme
 {
@@ -346,7 +346,7 @@ body
     background: light-dark(#c3c3c3, rgba(122, 118, 118, 1));
     width: 60px;
     height: 30px;
-    bottom: 20px;
+    bottom: 2%;
     right: 20px;
     border-radius: 25px;
     padding: 3px;
