@@ -464,7 +464,7 @@ body
     .nav-items {
         display: flex;
         align-items: center;
-        margin: 0 20%;
+        margin: 0 10%;
     }
 
     .nav-items a {
@@ -543,5 +543,11 @@ body
     .loading-area
     {
         box-shadow: black 5px 5px 35px 10px;
+    }
+    .switch-auto
+    {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
     }
 }
