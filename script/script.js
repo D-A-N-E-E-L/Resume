@@ -1,29 +1,8 @@
-const line = document.getElementById('line');
-const age =document.getElementById('age');
 const load = document.getElementById('load');
 const switcher = document.getElementById('switch');
 const html = document.getElementById('html');
 lucide.createIcons();
 const switch_auto = document.getElementById('switch-auto');
-async function getIP()
-{
-    let token = "3ad52514059894";
-    await fetch(`https://api.ipinfo.io/lite/me`,
-        {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-        .then(data => {
-            line.style.setProperty('--before-content', `"|||${data.ip}|||${data.country}|||${data.ip}|||${data.ip}|||${data.ip}|||${data.ip}|||${data.ip}|||${data.ip}|||${data.ip}|||"`)
-        });
-}
-const date = new Date();
-const bDate = new Date('2004-12-22');
-age.innerHTML += " " + Math.floor(Math.abs((bDate - date)/(1000*60*60*24*365)));
-getIP();
 window.addEventListener('load', function ()
 {
     const cookie = document.cookie.split('=')[1];
