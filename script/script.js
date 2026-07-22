@@ -7,15 +7,15 @@ window.addEventListener('load', function ()
 {
     const cookie = document.cookie.split('=')[1];
     load.classList.add('loading-area-animation');
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', ()=>{
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
-        else switcher.children.item(0).style.marginLeft = '0%';
-    })
     if(document.cookie) {
         html.style.colorScheme = cookie;
         if (cookie === "light") switcher.children.item(0).style.marginLeft = '50%';
     }
+    else if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', ()=>{
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) switcher.children.item(0).style.marginLeft = '50%';
+        else switcher.children.item(0).style.marginLeft = '0%';
+    })
     if (html.style.colorScheme === 'dark light')
     {
         switch_auto.style.transform = "rotateZ(90deg)";
